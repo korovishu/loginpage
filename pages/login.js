@@ -4,8 +4,10 @@ import { FormControl } from "baseui/form-control";
 import { Button } from "baseui/button";
 import Link from "next/link"
 import SocialSignIn from "../components/SocialSignIn";
+import { useAuth } from "../lib/auth";
 
 export default function App() {
+  const auth = useAuth();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   return (
@@ -41,6 +43,7 @@ export default function App() {
                 />
             </FormControl>
             <Button 
+            onClick={()=> auth.signinWithEmail(email, pass, '/')}
             overrides={{
                 BaseButton: {
                 style: ({ $theme }) => ({
