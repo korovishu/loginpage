@@ -26,6 +26,13 @@ export default function App() {
                 error={false}
                 clearOnEscape
                 required
+                overrides={{
+                    Root: {
+                    style: () => ({
+                        borderRadius: "0.375rem"
+                    })
+                    }
+                }}
                 />
             </FormControl>
             <FormControl
@@ -40,15 +47,23 @@ export default function App() {
                 type='password'
                 clearOnEscape
                 required
+                overrides={{
+                    Root: {
+                    style: () => ({
+                        borderRadius: "0.375rem"
+                    })
+                    }
+                }}
                 />
             </FormControl>
             <Button 
             onClick={()=> auth.signinWithEmail(email, pass)}
             overrides={{
                 BaseButton: {
-                style: ({ $theme }) => ({
+                style: () => ({
                     width:'100%',
-                    backgroundColor: '#3B82F6'
+                    backgroundColor: '#3B82F6',
+                    borderRadius: "0.375rem"
                 })
                 }
             }}>
@@ -60,8 +75,11 @@ export default function App() {
                     <span
                     className="cursor-pointer text-pink-600"> Sign Up.</span>
                 </Link>
-                
             </p>
+
+            {/* <p className="text-sm font-light underline">
+                Forgot password?
+            </p> */}
         </div>
         
       
