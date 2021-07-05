@@ -8,6 +8,7 @@ export default function Dashboard() {
     else if(!auth.user) {
         auth.setRedirect(Router.pathname);
         Router.push('/login');
+        return null;
     }
 
     return (
