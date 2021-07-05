@@ -4,7 +4,7 @@ import { useAuth } from '../lib/auth'
 
 export default function App() {
   const auth = useAuth();
-
+  if(auth.loading) return null;
   return (
     <div className="flex flex-col items-center">
       {auth.user ? 

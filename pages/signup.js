@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { Input } from "baseui/input";
 import { FormControl } from "baseui/form-control";
 import { Button } from "baseui/button";
@@ -10,7 +10,17 @@ export default function App() {
   const auth = useAuth();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [rePass,setRePass] = useState("");
+  const [rePass, setRePass] = useState("");
+  const [confError, setConfError] = useState(false);
+
+  useEffect(()=>{
+    if(pass !== rePass){
+        setConfError(true);
+    } else {
+        setConfError(false);
+    }
+  },[pass,rePass])
+
   return (
     <div className="flex flex-col items-center">
         <div className="w-1/5 mt-14">
@@ -51,14 +61,15 @@ export default function App() {
                 value={rePass}
                 onChange={e => setRePass(e.target.value)}
                 placeholder="Re-Enter Password"
-                error={false}
+                error={confError}
                 type='password'
                 clearOnEscape
                 required
                 />
             </FormControl>
             <Button 
-            onClick={()=>auth.signUp(email,pass,'/')}
+            disabled = {confError}
+            onClick={()=>auth.signUp(email,pass)}
             overrides={{
                 BaseButton: {
                 style: ({ $theme }) => ({

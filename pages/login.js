@@ -43,7 +43,7 @@ export default function App() {
                 />
             </FormControl>
             <Button 
-            onClick={()=> auth.signinWithEmail(email, pass, '/')}
+            onClick={()=> auth.signinWithEmail(email, pass)}
             overrides={{
                 BaseButton: {
                 style: ({ $theme }) => ({
