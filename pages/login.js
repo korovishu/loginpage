@@ -12,7 +12,7 @@ export default function App() {
   const [pass, setPass] = useState("");
   return (
     <div className="flex flex-col items-center">
-        <div className="w-1/5 mt-14">
+        <div className="w-1/5 mt-14 min-w-max">
             <SocialSignIn />
             <hr className='mb-5' />
             <FormControl
