@@ -1,15 +1,11 @@
 import { useAuth } from "../lib/auth";
 import Router from 'next/router'
+import withAuth from "../utils/withAuth";
 
 export default function Dashboard() {
     const auth = useAuth();
 
-    if(auth.loading) return null;
-    else if(!auth.user) {
-        auth.setRedirect(Router.pathname);
-        Router.push('/login');
-        return null;
-    }
+    if(withAuth(auth)) return null;
 
     return (
         <p>
